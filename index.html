@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎉 Feliz Cumpleaños Joel 🎉</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0d1117, #1e2a38);
+      color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(15, 20, 30, 0.9);
+      border: 2px solid #0d6efd;
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 20px #0d6efd88;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .title {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      color: #0d6efd;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    .message {
+      font-size: clamp(1rem, 4vw, 1.2rem);
+      line-height: 1.5rem;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+      animation-delay: 1s;
+    }
+
+    .button {
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background: #0d6efd;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      font-size: clamp(0.9rem, 3.5vw, 1rem);
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
+      width: 100%;
+      max-width: 220px;
+    }
+
+    .button:hover {
+      background: #1a73e8;
+      transform: scale(1.05);
+    }
+
+    /* Animaciones */
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes confettiFall {
+      0% {transform: translateY(-100vh) rotate(0deg);}
+      100% {transform: translateY(100vh) rotate(360deg);}
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #0d6efd;
+      top: -10px;
+      animation: confettiFall linear forwards;
+    }
+
+    /* Responsivo extra */
+    @media (max-width: 480px) {
+      .card {
+        padding: 1.5rem;
+      }
+      .message {
+        line-height: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1 class="title">¡Feliz Cumple Joel! 🎉</h1>
+    <p class="message">
+      Hoy se celebra a un crack 🔥.<br>
+      Que sigan los éxitos, las risas y las locuras.<br>
+      Gracias por ser parte de la crew 🤝. <br>
+      Un placer chambear contigo bro 🦾.
+    </p>
+    <button class="button" onclick="lanzarConfeti()">Tirar Confeti 🎊</button>
+  </div>
+
+  <script>
+    function lanzarConfeti() {
+      for (let i = 0; i < 30; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        document.body.appendChild(confetti);
+
+        let size = Math.random() * 8 + 5;
+        confetti.style.width = `${size}px`;
+        confetti.style.height = `${size}px`;
+        confetti.style.left = `${Math.random() * window.innerWidth}px`;
+        confetti.style.background = ["#0d6efd", "#1a73e8", "#495057", "#6c757d"][Math.floor(Math.random()*4)];
+        confetti.style.animationDuration = `${Math.random() * 2 + 3}s`;
+        confetti.style.animationDelay = `${Math.random()}s`;
+
+        setTimeout(() => { confetti.remove(); }, 5000);
+      }
+    }
+  </script>
+</body>
+</html>
